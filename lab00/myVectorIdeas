@@ -1,0 +1,8 @@
+myVector could be expanded to include a method that could
+expand how many coordinates are allowed. This might be 
+tricky as c[] is a private variable.
+ Another cool thing
+would be able to find the dot and cross product of n
+ vectors. This wouldn't be two difficult. 
+ 
+
