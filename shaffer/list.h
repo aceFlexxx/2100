@@ -13,16 +13,26 @@ public:
   virtual ~List() {} // Base destructor
 
   // Clear contents from the list, to make it empty.
-  virtual void clear() = 0;
+  void clear(){
+		moveToStart();
+		if(length()>0){
+			while(length>0){
+				remove();		
+			}
+		}
 
+		
+	}
   // Insert an element at the current location.
   // item: The element to be inserted
   virtual void insert(const E& item) = 0;
-
+		
   // Append an element at the end of the list.
   // item: The element to be appended.
-  virtual void append(const E& item) = 0;
-
+	void append(){
+		moveToEnd();
+		insert(E it);
+	}
   // Remove and return the current element.
   // Return: the element that was removed.
   virtual E remove() = 0;
