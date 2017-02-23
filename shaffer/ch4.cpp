@@ -35,7 +35,8 @@ L2.moveToStart();
 L2.insert(39);
 L2.next();
 L2.insert(12);
-
+L2.moveToPos(28);
+L2.clear();
 for (L2.moveToStart(); L2.currPos()<L2.length(); L2.next()) {
   it = L2.getValue();
   doSomething(it);

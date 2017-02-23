@@ -27,13 +27,13 @@ public:
   }
 
   ~AList() { delete [] listArray; } // Destructor
-
+/*
   void clear() {                    // Reinitialize the list
     delete [] listArray;            // Remove the array
     listSize = curr = 0;            // Reset the size
     listArray = new E[maxSize];  // Recreate array
   }
-
+*/
   // Insert "it" at current position
   void insert(const E& it) {
     Assert(listSize < maxSize, "List capacity exceeded");
@@ -69,11 +69,11 @@ public:
   int currPos() const { return curr; }
 
   // Set current list position to "pos"
-  void moveToPos(int pos) {
+ /* void moveToPos(int pos) {
     Assert ((pos>=0)&&(pos<=listSize), "Pos out of range");
     curr = pos;
   }
-
+*/
   const E& getValue() const { // Return current element
     Assert((curr>=0)&&(curr<listSize),"No current element");
     return listArray[curr];

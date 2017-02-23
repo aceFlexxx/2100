@@ -29,9 +29,9 @@ public:
 		
   // Append an element at the end of the list.
   // item: The element to be appended.
-	void append(){
+	void append(const E& it){
 		moveToEnd();
-		insert(E it);
+		insert(it);
 	}
   // Remove and return the current element.
   // Return: the element that was removed.
@@ -56,11 +56,15 @@ public:
 
   // Return: The position of the current element.
   virtual int currPos() const = 0;
-
   // Set current position.
   // pos: The position to make current.
-  virtual void moveToPos(int pos) = 0;
-
+  void moveToPos(int pos){
+  	moveToStart();
+	while(currPos()!=pos){
+		next();
+	}  		  
+  }
+  
   // Return: The current element.
   virtual const E& getValue() const = 0;
 };
