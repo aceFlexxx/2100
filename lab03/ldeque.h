@@ -13,7 +13,7 @@
 // Array-based stack implementation
 template <typename E> class LDeque: public Stack<E> {
 private:
-  Link<E>* top;                  // Index for top element
+  Link<E>* top;                  // Index for top element (front)
   Link<E>* bottom;
   int size;
 
@@ -42,7 +42,10 @@ public:
     Assert(top != 0, "Stack is empty");
     return listArray[--top];
   }
-
+  
+  void enqueue(const E& it){		//Put "it" in back/bottom
+  	Assert(bot
+  
   const E& topValue() const {     // Return top element
     Assert(top != 0, "Stack is empty");
     return listArray[top-1];
