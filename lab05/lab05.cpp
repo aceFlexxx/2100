@@ -11,6 +11,7 @@ int count(BinNode<E>* root) {
 
 template <typename E>
 int height(BinNode<E>* root) {
+  
   return 0;
 }
 
