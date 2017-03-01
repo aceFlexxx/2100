@@ -8,13 +8,14 @@ int main(){
 
 	string message="()((";
      int holder=message.length();
-	AStack<int> myStack;
+	AStack<char> myStack;
 	bool balance;
-	int placeHolder=-10;
-	AStack<int> placeStack;	
-	
-	
-	for(int i=0;i<holder;++i){	
+	int i = 0;
+	AStack<int> placeStack;
+	myStack.push('E');	
+	int placeHolder=0;	
+
+	while(i<holder){	+
 		if(message[i]=='('){		          
 			myStack.push(message[i]);
 			placeStack.push(i+1);
@@ -57,4 +58,3 @@ int main(){
 		//first rightie unmatched. :/
 	}
 }
-

@@ -8,18 +8,20 @@
 
 // First, get the declaration for the base stack class
 #include "stack.h"
+#include "link.h"
 
 // This is the declaration for LDeque.
 // Array-based stack implementation
 template <typename E> class LDeque: public Stack<E> {
 private:
-  Link<E>* top;                  // Index for top element (front)
-  Link<E>* bottom;
+  Link<E>* front;                  // Index for top element (front)
+  Link<E>* rear;
   int size;
+  int maxSize;
 
 public:
   LDeque(int size =defaultSize)   // Constructor
-    { front = rear= new Link,<E>(); size=0; }
+    { front = rear= new Link <E>(); size=0; }
 
   ~LDeque() { clear(); delete front; }  // Destructor
 
@@ -34,22 +36,33 @@ public:
            // Reinitialize
 
   void push(const E& it) {         // Put "it" on stack
-    Assert(top != maxSize, "Stack is full");
-    listArray[top++] = it;
+    Assert(front != maxSize, "Stack is full");
+    listArray[front++] = it;
   }
 
   E pop() {                // Pop top element
-    Assert(top != 0, "Stack is empty");
-    return listArray[--top];
+    Assert(front != 0, "Stack is empty");
+    return listArray[--front];
   }
   
-  void enqueue(const E& it){		//Put "it" in back/bottom
-  	Assert(bot
-  
+  /*void enqueue(const E& it){		//Put "it" in back/bottom
+  	Assert(rear != 0, "Stack is full");
+	listArray[rear++] = it;
+ 
+  void dequeue(const E& it){		//Pop "it" from back/bottom
+  	  Assert(rear != 0, "Stack is empty");
+	  return listArray[rear--];
+  }
+*/
   const E& topValue() const {     // Return top element
-    Assert(top != 0, "Stack is empty");
-    return listArray[top-1];
+    Assert(front != 0, "Stack is empty");
+    return listArray[front-1];
   }
-
-  int length() const { return top; }  // Return length
+  /*
+  const E& botValue() const {     // Return bot element
+    Assert(rear != 0, "Stack is empty");
+    return listArray[rear+1];
+  }
+  */
+  int length() const { return front; }  // Return length
 };
