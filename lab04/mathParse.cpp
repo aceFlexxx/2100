@@ -15,19 +15,22 @@ int main(){
 	myStack.push('E');	
 	int placeHolder=0;	
 
-	while(i<holder){	+
-		if(message[i]=='('){		          
-			myStack.push(message[i]);
-			placeStack.push(i+1);
+	while(i<holder){
+		char c = message[i];
+		char s = myStack.topValue();
+		if((c == '(') && (s = '(')){		          
+			myStack.pop();
+			i++;			
 			//cout << "I pushed a lefty!" << endl;
-		}//pushes each left par and keeps track of lefties open with placeStack
-		else if((message[i]==')')&&(myStack.length()==0)){
-			placeHolder=i+1;
-			myStack.push(message[i]);
+		}//Don't really know what this does outside of popping if 
+
+		else if((c == ')') && (s = ')')){
+			myStack.pop();
+			i++;
 			//cout << "I pushed a righty!" << endl;
 			//cout << myStack.topValue() << "at " << i << endl;
 		}//if there are no open lefties then a rightie get's pushed in				
-		else if((message[i]==')')&&(myStack.length()>0)&&(myStack.topValue()=='(')){
+		else if((c == '*') || )){
 			myStack.pop();
 			placeStack.pop();
 			//cout << "I popped!" << endl << myStack.length() << endl;
@@ -43,8 +46,8 @@ int main(){
 		if(myStack.topValue()==')'){
 			cout << "False" << endl;
   			cout << "Open right parenthesis at position " << placeHolder << endl;
-			cout << "Original phrase:" << message << endl;
 		}//if the problem was a rightie left open
+		
 		else{
 			//placeStack.moveToStart();
 			for(int i=0; i<placeStack.length()-1;++i){
