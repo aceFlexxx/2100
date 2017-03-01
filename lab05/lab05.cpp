@@ -10,20 +10,46 @@ int count(BinNode<E>* root) {
 }
 
 template <typename E>
-int height(BinNode<E>* root) {
-  
-  return 0;
-}
+int height(BinNode<E>* root) { 
+  	if(root== NULL) return 0;
+	int lHeight = count(root->left());
+	int rHeight = count(root->right());
+  	if (lHeight > rHeight) return lHeight;
+	
+	else return rHeight;
+	
+	}
 
 template <typename E>
-int leaf_count(BinNode<E>* root) {
-  return 0;
+int leaf_count(BinNode<E>* root) 
+{
+	if(root == NULL) return 0;
+	
+	if(root -> isLeaf() == true) return 1;
+	
+	else{	
+		return (leaf_count(root -> left())) +
+		leaf_count(root -> right());
+			
+	}
+	//if(root -> isLeaf() == true);
+	//return count(int(root -> isLeaf()));
 }
 
 template <typename E>
 int sum_nodes(BinNode<E>* root) {
-  return 0;
+	if (root == NULL) return 0;
+	
+	int leafSum = 0;
+	leafSum = root -> element() + sum_nodes(root -> left()) 
+	+ sum_nodes(root -> right());
+	/*
+	leafSum += sum_nodes(int(root -> left())) +
+	sum_nodes(int(root -> right()));
+	*/
+	return leafSum;
 }
+
 
 template <typename E>
 bool search(BinNode<E>* root, const E& val) {
