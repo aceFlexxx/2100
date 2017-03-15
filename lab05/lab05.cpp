@@ -1,6 +1,6 @@
 #include "book.h"
 #include "BSTNode.h"
-#include "aqueue.h"
+#include "lqueue.h"
 
 // Count the number of nodes in a binary tree
 template <typename E>
@@ -63,7 +63,7 @@ bool search(BinNode<E>* root, const E& val) {
 
 template <typename E>
 void print_tree(BinNode<E>* root) {	
-	AQueue(count(root)) printQ;
+	LQueue printQ(10);
 	
 	   	
 	cout << endl << root -> element() << endl;
