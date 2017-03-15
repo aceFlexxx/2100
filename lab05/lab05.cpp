@@ -52,12 +52,21 @@ int sum_nodes(BinNode<E>* root) {
 
 
 template <typename E>
-bool search(BinNode<E>* root, const E& val) {
-  return false;
+bool search(BinNode<E>* root, const E& val) {	
+	if (root == NULL) return 0;	
+	else if (root -> element()  == val) return 1;
+	else if (search(root -> left(), val)) return 1;
+	else if (search(root -> right(), val)) return 1;
+	else return 0;	
 }
 
 template <typename E>
-void print_tree(BinNode<E>* root) {
+void print_tree(BinNode<E>* root) {	
+	
+	cout << endl << root -> element() << endl;
+	cout << endl << root -> left() -> element() << endl;
+     cout << endl << root -> right() -> element() << endl;
+			 			
 }
 
 template <typename E>
