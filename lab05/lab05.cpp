@@ -46,8 +46,7 @@ int sum_nodes(BinNode<E>* root) {
 	+ sum_nodes(root -> right());
 	/*
 	leafSum += sum_nodes(int(root -> left())) +
-	sum_nodes(int(root -> right()));
-	*/
+	sum_nodes(int(root -> right()));	*/
 	return leafSum;
 }
 
@@ -62,18 +61,37 @@ bool search(BinNode<E>* root, const E& val) {
 }
 
 template <typename E>
-void print_tree(BinNode<E>* root) {	
-	LQueue printQ(10);
-	
-	   	
-	cout << endl << root -> element() << endl;
-	cout << endl << root -> left() -> element() << endl;
-     cout << endl << root -> right() -> element() << endl;
-			 			
+void print_tree_by_level(BinNode<E>* root) {
+	if(root==NULL) return;
+	int tLength = count(root);
+	LQueue<BinNode<E>*> printQ(tLength);
+	cout << "Your tree:" << endl;
+	printQ.enqueue(root);
+	while(printQ.length()>0){
+		//cout << printQ.frontValue() -> element() << endl;
+  		//if(printQ.frontValue() -> element()  == NULL) {	
+			BinNode<E>* temp = printQ.dequeue();	
+			cout << temp -> element() << endl;
+			
+			//if(temp -> left() -> isLeaf() == false){
+				printQ.enqueue(temp -> left());
+			
+			//if(temp -> right() -> isLeaf() == false){
+				printQ.enqueue(temp -> right());
+			
+		
+		
+	       	
+	}			 			
 }
 
 template <typename E>
-void print_tree_by_level(BinNode<E>* root) {
+void print_tree(BinNode<E>* root) {
+	if(root==NULL) return;
+	print_tree(root -> left());
+	print_tree(root -> right());
+	
+	cout << root -> element() << endl;
 }
 
 int main()
@@ -81,16 +99,25 @@ int main()
   BSTNode<int,int>* root = new BSTNode<int,int>(1,1);
   BSTNode<int,int>* left = new BSTNode<int,int>(2,2);
   BSTNode<int,int>* right = new BSTNode<int,int>(3,3);
-  left->setLeft(new BSTNode<int,int>(4,4));
-  left->setRight(new BSTNode<int,int>(5,5));
+  BSTNode<int,int>*  l2= new BSTNode<int,int>(4,4);
+  BSTNode<int,int>* r2= new BSTNode<int,int>(5,5);
+  //BSTNode<int,int>*  l3= new BSTNode<int,int>(6,7);
+  //BSTNode<int,int>* r3= new BSTNode<int,int>(7,9);
+
+  //l3->setLeft(l2);
+  //r3->setRight(r2);
+  left ->setLeft(l2);
+  left ->setRight(r2);
   root->setLeft(left);
   root->setRight(right);
+  cout << "Your tree out of order:" << endl;
   print_tree(root);
+  print_tree_by_level(root);
   cout << " Node count = " << count(root) << endl;
   cout << " Height = " << height(root) << endl;
   cout << " Leaf count = " << leaf_count(root) << endl;
   cout << " Sum of node values = " << sum_nodes(root) << endl;
-  for (int i=0; i <= 6; i++) {
+  for (int i=0; i <= 9; i++) {
     if (search(root, i)) {
       cout << "Found " << i << " in the tree..." << endl;
     }
