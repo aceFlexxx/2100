@@ -19,6 +19,8 @@ int main()
             char a[80];
             int nvert = 0;
 	    int nedge = 0;
+	    char b[80];
+	    
 	    if(!stream1)
 
             {
@@ -38,18 +40,28 @@ int main()
             while(!stream1.eof())
             {
                         stream1 >> a;
-			if(!stream1.eof())
-			{	
+			if(!stream1.eof()){		
 				for (int i=0; i < string(a).length(); ++i){
-					if(a[i] == ',') ++nedge;
-					else ++nvert;
+					if(a[i] == ','){
+						++nedge;
+					} 
+					else {
+						for(int f = 0; f < string(b).length(); ++f){
+							if(b[f] != a[i]){
+								b[f]=a[i];
+								++nvert;
+							}
+					        }
+								
+					}
 				}
 				cout << a << endl;	           
-			}      
-	    }
+			}
+	    }		
 	    cout <<"nvert: " << nvert << endl;
 	    cout <<"nedge: " << nedge << endl;
 	    cout <<"size of a: " << string(a).length() << endl;
             return(0);
 
+	    
 }
